@@ -13,10 +13,10 @@
 
         <form th:action="@{/login}" method="post" class="col">
             <label for="username">Username</label>
-            <input id="username" name="username" type="text" required value="root">
+            <input id="username" name="username" type="text" required>
 
             <label for="password">Password</label>
-            <input id="password" name="password" type="password" required value="root">
+            <input id="password" name="password" type="password" required>
 
             <p th:if="${error}" th:text="${error}" class="warning">Error</p>
 

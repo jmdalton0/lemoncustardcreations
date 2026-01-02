@@ -9,11 +9,12 @@
 
 <body>
     <main layout:fragment="content">
-        <h1>Products</h1>
+        <h1 class="hide">Products</h1>
 
-        <ul>
-            <li th:each="product: ${products}">
-                <p th:text="${product.getName()}" class="name">Name</p>
+        <ul class="row center wrap">
+            <li th:each="product: ${products}" class="product m">
+                <img th:src="${product.getImageUrl()}" th:alt="${product.getName()}">
+                <h3 th:text="${product.getName()}" class="name">Name</h3>
                 <p>$<span th:text="${product.getPrice()}" class="name">Name</span></p>
             </li>
         </ul>
