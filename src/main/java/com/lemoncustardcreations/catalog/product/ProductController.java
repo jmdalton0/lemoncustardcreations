@@ -20,12 +20,12 @@ public class ProductController {
     @GetMapping
     public String index(Model model) {
         model.addAttribute("products", service.findAll());
-        return "/products";
+        return "products";
     }
 
     @GetMapping("/create")
     public String showCreate() {
-        return "/products-create";
+        return "products-create";
     }
 
     @PostMapping
