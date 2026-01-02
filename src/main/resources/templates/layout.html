@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title layout:title-pattern="$CONTENT_TITLE - $LAYOUT_TITLE">Lemon Custard Creations</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+
+<body>
+    <header>
+        <nav class="col align-center">
+            <ul>
+                <li>
+                    <a th:href="@{/}">
+                        <img id="logo-nav" src="/img/logo.png" alt="lemon custard creations logo">
+                    </a>
+                </li>
+            </ul>
+            <ul class="row">
+                <li class="mx">
+                    <a th:href="@{/}">Home</a>
+                </li>
+                <li class="mx">
+                    <a th:href="@{/products}">Products</a>
+                </li>
+                <li class="mx">
+                    <a th:href="@{/about}">About</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main layout:fragment="content">content</main>
+
+    <footer class="center">
+        <h6 class="mx"><a th:href="@{/}">Lemon Custard Creations</a></h6>
+        <h6 class="mx"><a th:href="@{/admin}">Admin</a></h6>
+    </footer>
+</body>
+
+</html>

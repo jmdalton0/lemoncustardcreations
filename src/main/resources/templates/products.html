@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout.html}">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products</title>
+</head>
+
+<body>
+    <main layout:fragment="content">
+        <h1>Products</h1>
+
+        <ul>
+            <li th:each="product: ${products}">
+                <p th:text="${product.getName()}" class="name">Name</p>
+                <p>$<span th:text="${product.getPrice()}" class="name">Name</span></p>
+            </li>
+        </ul>
+    </main>
+</body>
+
+</html>

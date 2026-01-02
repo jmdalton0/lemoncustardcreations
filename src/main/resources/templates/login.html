@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout.html}">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+
+<body>
+    <main layout:fragment="content">
+        <h1>Login</h1>
+
+        <form th:action="@{/login}" method="post" class="col">
+            <label for="username">Username</label>
+            <input id="username" name="username" type="text" required value="root">
+
+            <label for="password">Password</label>
+            <input id="password" name="password" type="password" required value="root">
+
+            <p th:if="${error}" th:text="${error}" class="warning">Error</p>
+
+            <button type="submit" class="btn">Login</button>
+        </form>
+    </main>
+</body>
+
+</html>

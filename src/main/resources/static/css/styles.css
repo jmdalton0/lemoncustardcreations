@@ -1,0 +1,162 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+    --text: #222;
+
+    --white: #fff;
+    --grey: #bbb;
+
+    --primary: #aade98;
+    --primary-dark: #649552;
+
+    --secondary: #ead470;
+
+    --trans: 0.1s;
+}
+
+html {
+    font-size: 16px;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    color: var(--text);
+}
+
+header {
+    position: sticky;
+    top: 0;
+    padding-bottom: 1rem;
+    background-color: var(--primary);
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    padding: 1rem 2rem;
+}
+
+footer {
+    padding: 2rem;
+    color: var(--white);
+    background-color: var(--text);
+}
+
+h1 {
+    font-size: 3rem;
+}
+
+h2 {
+    font-size: 2.5rem;
+}
+
+h5 {
+    font-size: 1rem;
+}
+
+h6 {
+    font-size: 0.8rem;
+}
+
+p {
+    font-size: 1rem;
+}
+
+li {
+    list-style-type: none;
+}
+
+a {
+    font-weight: bold;
+    text-decoration: none;
+    color: var(--primary-dark);
+    opacity: 1;
+    transition: all var(--trans) ease;
+}
+
+a:hover {
+    opacity: 0.6;
+}
+
+form {
+    margin: 1rem;
+    padding: 1rem;
+    border: 1px solid var(--grey);
+}
+
+label {
+    margin-bottom: 0.5rem;
+}
+
+input {
+    width: 20rem;
+    margin-bottom: 1rem;
+    border: 1px solid var(--grey);
+    padding: 0.5rem;
+}
+
+button {
+    font-weight: bold;
+    padding: 0.5rem 2rem;
+    background-color: var(--secondary);
+    border: none;
+    transition: all var(--trans) ease;
+}
+
+button:hover {
+    cursor: pointer;
+    opacity: 0.6;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+}
+
+.col {
+    display: flex;
+    flex-direction: column;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.justify-center {
+    display: flex;
+    justify-content: center;
+}
+
+.align-center {
+    display: flex;
+    align-items: center;
+}
+
+.name {
+    text-transform: capitalize;
+}
+
+.warning {
+    margin-bottom: 1rem;
+    color: red;
+}
+
+.mx {
+    margin: 0 1rem;
+}
+
+.my {
+    margin: 1rem 0;
+}
+
+#logo-nav {
+    width: 8rem;
+}

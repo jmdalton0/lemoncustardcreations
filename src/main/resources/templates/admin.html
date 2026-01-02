@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout.html}">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin</title>
+</head>
+
+<body>
+    <main layout:fragment="content">
+        <h1>Admin</h1>
+        <a th:href="@{/products/create}" class="my">Create Product</a>
+    </main>
+</body>
+
+</html>
