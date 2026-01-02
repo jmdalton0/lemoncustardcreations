@@ -11,6 +11,10 @@
     <main layout:fragment="content">
         <h1>Admin</h1>
         <a th:href="@{/products/create}" class="my">Create Product</a>
+
+        <form th:action="@{/logout}" method="post">
+            <button type="submit">Logout</button>
+        </form>
     </main>
 </body>
 

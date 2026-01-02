@@ -34,6 +34,13 @@ public class SecurityConfig {
                 .defaultSuccessUrl("/admin", true)
                 .permitAll()
 
+            ).logout(logout -> logout
+
+                .logoutUrl("/logout")
+                .logoutSuccessUrl("/")
+                .invalidateHttpSession(true)
+                .permitAll()
+
             );
 
         return http.build();
