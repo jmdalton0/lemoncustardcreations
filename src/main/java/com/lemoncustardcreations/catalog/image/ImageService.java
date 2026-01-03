@@ -27,9 +27,10 @@ public class ImageService {
         @Value("${app.cloudinary.api-secret}") String apiSecret
     ) {
         this.urls = new ArrayList<>();
+        urls.add("main-sample");
         urls.add("diamonds-front_oecwx4");
         urls.add("blue-leaves-front_ivgqqa");
-        urls.add("main-sample");
+        urls.add("purple-peach_r6nqay");
 
         this.cloudinary = new Cloudinary(ObjectUtils.asMap(
             "cloud_name", cloudName,
