@@ -25,13 +25,17 @@ public class ProductService {
         List<Product> products = repo.findAll();
         for (Product product : products) {
             String imageUrl = imageService.getImageUrl();
-            product.setImageUrl(imageUrl);
+            product.addImageUrl(imageUrl);
         }
         return products;
     }
 
     public void save(Product product) {
         repo.save(product);
+    }
+
+    public void delete(Long id) {
+        repo.deleteById(id);
     }
     
 }

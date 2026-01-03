@@ -1,10 +1,14 @@
 package com.lemoncustardcreations.catalog.product;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 
 @Entity
 @Table(name = "product")
@@ -18,15 +22,18 @@ public class Product {
 
     private Double price;
 
-    private String imageUrl;
+    @Transient
+    private List<String> imageUrls;
 
-    public Product() {}
+    public Product() {
+        this.imageUrls = new ArrayList<>();
+    }
 
-    public Product(Long id, String name, Double price, String imageUrl) {
+    public Product(Long id, String name, Double price) {
         this.id = id;
         this.name = name;
         this.price = price;
-        this.imageUrl = imageUrl;
+        this.imageUrls = new ArrayList<>();
     }
 
     public Long getId() {
@@ -41,8 +48,8 @@ public class Product {
         return price;
     }
 
-    public String getImageUrl() {
-        return imageUrl;
+    public List<String> getImageUrls() {
+        return imageUrls;
     }
 
     public void setId(Long id) {
@@ -57,8 +64,8 @@ public class Product {
         this.price = price;
     }
 
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
+    public void addImageUrl(String url) {
+        this.imageUrls.add(url);
     }
 
 }

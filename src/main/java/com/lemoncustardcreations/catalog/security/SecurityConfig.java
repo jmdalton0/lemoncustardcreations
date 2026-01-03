@@ -22,6 +22,7 @@ public class SecurityConfig {
                     "/about",
                     "/css/**",
                     "/img/**",
+                    "/js/**",
                     "/favicon.ico")
                 .permitAll()
 

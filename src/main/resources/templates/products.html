@@ -13,8 +13,12 @@
 
         <ul class="row center wrap">
             <li th:each="product: ${products}" class="product m">
-                <img th:src="${product.getImageUrl()}" th:alt="${product.getName()}">
-                <h3 th:text="${product.getName()}" class="name">Name</h3>
+
+                <div class="image-group">
+                    <img th:each="image: ${product.getImageUrls()}" th:src="${image}" th:alt="${product.getName()}">
+                </div>
+
+                <h3 th:text="${product.getName()}">Name</h3>
                 <p>$<span th:text="${product.getPrice()}" class="name">Name</span></p>
             </li>
         </ul>

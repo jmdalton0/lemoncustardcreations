@@ -5,15 +5,61 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin</title>
+    <script th:src="@{/js/headers.js}"></script>
+    <script th:src="@{/js/products.js}"></script>
 </head>
 
 <body>
     <main layout:fragment="content">
         <h1>Admin</h1>
-        <a th:href="@{/products/create}" class="my">Create Product</a>
 
-        <form th:action="@{/logout}" method="post">
-            <button type="submit">Logout</button>
+        <section class="col align-center mb">
+            <h2>Products</h2>
+            <ul x-data="productStore" class="row wrap justify-center">
+                <template x-for="product in products" :key="product.id || '0'">
+                    <li class="col product-admin">
+
+                        <div class="row justify-between mb-sm">
+                            <label for="name" class="mr">Name</label>
+                            <input id="name" name="name" type="text" x-model="product.name"></input>
+                        </div>
+
+                        <div class="row justify-between mb-sm">
+                            <label for="price" class="mr">Price</label>
+                            <input id="price" name="price" type="number" x-model="product.price"></input>
+                        </div>
+
+                        <div class="row justify-center mb-sm">
+                            <img th:src="@{/img/icons/image-icon.png}" alt="empty image">
+                            <!-- <input id="image" name="image" type="file"> -->
+                        </div>
+
+                        <div class="row product-admin-tools">
+                            <template x-if="product.id === null">
+                                <button @click="createProduct(product)" class="create-btn">
+                                    <img th:src="@{/img/icons/create-icon.png}" alt="create button">
+                                </button>
+                            </template>
+
+                            <template x-if="product.id !== null">
+                                <button @click="updateProduct(product)" class="update-btn">
+                                    <img th:src="@{/img/icons/update-icon.png}" alt="update button">
+                                </button>
+                            </template>
+
+                            <template x-if="product.id !== null">
+                                <button @click="deleteProduct(product.id)" class="delete-btn">
+                                    <img th:src="@{/img/icons/delete-icon.png}" alt="delete button">
+                                </button>
+                            </template>
+                        </div>
+                    </li>
+                </template>
+            </ul>
+        </section>
+
+        <form th:action="@{/logout}" method="post" class="form-as-button">
+                <button type="submit">Logout</button>
         </form>
     </main>
 </body>

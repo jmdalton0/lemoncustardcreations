@@ -8,15 +8,16 @@
     --white: #fff;
     --grey: #bbb;
 
-    --primary: #aade98;
-    --primary-dark: #4a703c;
+    --primary: #789;
+    --primary-dark: #234;
 
-    --secondary: #ead470;
+    --secondary: #3ecaa4;
 
     --trans: 0.1s;
 }
 
 html {
+    font-family: "Delius", Arial, Helvetica, sans-serif;
     font-size: 16px;
     background-color: var(--primary);
 }
@@ -50,13 +51,17 @@ footer {
     background-color: var(--primary);
 }
 
+section {
+    width: 100%;
+}
+
 h1 {
-    font-size: 3rem;
+    font-size: 2.5rem;
     margin-bottom: 1rem;
 }
 
 h2 {
-    font-size: 2.5rem;
+    font-size: 2rem;
     margin-bottom: 1rem;
 }
 
@@ -111,10 +116,8 @@ label {
 }
 
 input {
-    width: 20rem;
-    margin-bottom: 1rem;
     border: 1px solid var(--grey);
-    padding: 0.5rem;
+    padding: 0.2rem;
 }
 
 button {
@@ -154,9 +157,19 @@ img {
     align-items: center;
 }
 
+.justify-start {
+    display: flex;
+    justify-content: flex-start;
+}
+
 .justify-center {
     display: flex;
     justify-content: center;
+}
+
+.justify-between {
+    display: flex;
+    justify-content: space-between;
 }
 
 .align-center {
@@ -168,13 +181,30 @@ img {
     flex-wrap: wrap;
 }
 
-.name {
-    text-transform: capitalize;
-}
-
 .warning {
     margin-bottom: 1rem;
     color: red;
+}
+
+.create-btn {
+    background-color: green;
+    color: var(--white);
+}
+
+.update-btn {
+    background-color: var(--primary-dark);
+    color: var(--white);
+}
+
+.delete-btn {
+    background-color: red;
+    color: var(--white);
+}
+
+.form-as-button {
+    margin: 0;
+    padding: 0;
+    border: none;
 }
 
 .m {
@@ -189,6 +219,22 @@ img {
     margin: 1rem 0;
 }
 
+.mt {
+    margin-top: 1rem;
+}
+
+.mb {
+    margin-bottom: 1rem;
+}
+
+.mr {
+    margin-right: 1rem;
+}
+
+.mb-sm {
+    margin-bottom: 0.5rem;
+}
+
 .product {
     display: flex;
     flex-direction: column;
@@ -198,6 +244,32 @@ img {
 
 .product img {
     margin-bottom: 0.5rem;
+}
+
+.product-admin {
+    margin: 0.5rem;
+    padding: 1rem;
+    border: 1px solid var(--grey);
+    border-radius: 5px;
+}
+
+.product-admin input {
+    width: 10rem;
+}
+
+.product-admin img {
+    width: 6rem;
+    height: 6rem;
+}
+
+.product-admin-tools button {
+    flex: 1;
+    padding: 0.2rem 1rem;
+}
+
+.product-admin-tools img {
+    width: 2rem;
+    height: 2rem;
 }
 
 #logo-nav {

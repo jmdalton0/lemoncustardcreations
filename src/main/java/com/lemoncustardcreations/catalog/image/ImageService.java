@@ -1,5 +1,9 @@
 package com.lemoncustardcreations.catalog.image;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +17,8 @@ public class ImageService {
     private final int W = 400;
     private final int H = 500;
 
+    private final List<String> urls;
+
     private final Cloudinary cloudinary;
 
     public ImageService(
@@ -20,7 +26,11 @@ public class ImageService {
         @Value("${app.cloudinary.api-key}") String apiKey,
         @Value("${app.cloudinary.api-secret}") String apiSecret
     ) {
-        System.out.println(cloudName);
+        this.urls = new ArrayList<>();
+        urls.add("diamonds-front_oecwx4");
+        urls.add("blue-leaves-front_ivgqqa");
+        urls.add("main-sample");
+
         this.cloudinary = new Cloudinary(ObjectUtils.asMap(
             "cloud_name", cloudName,
             "api_key", apiKey,
@@ -30,10 +40,11 @@ public class ImageService {
     }
 
     public String getImageUrl() {
+        Random rand = new Random();
         return cloudinary
             .url()
             .transformation(new Transformation<>().width(W).height(H).crop("fill"))
-            .generate("samples/animals/three-dogs");
+            .generate(urls.get(rand.nextInt(urls.size())));
     }
     
 }

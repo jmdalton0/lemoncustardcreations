@@ -1,14 +1,19 @@
 package com.lemoncustardcreations.catalog.product;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import java.util.List;
 
-@Controller
-@RequestMapping("/products")
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequestMapping("/api/products")
 public class ProductController {
 
     private final ProductService service;
@@ -18,20 +23,23 @@ public class ProductController {
     }
 
     @GetMapping
-    public String index(Model model) {
-        model.addAttribute("products", service.findAll());
-        return "products";
-    }
-
-    @GetMapping("/create")
-    public String showCreate() {
-        return "products-create";
+    public List<Product> index(Model model) {
+        return service.findAll();
     }
 
     @PostMapping
-    public String create(@ModelAttribute Product product) {
+    public void create(@RequestBody Product product) {
         service.save(product);
-        return "redirect:/products";
+    }
+
+    @PutMapping("/{id}")
+    public void update(@PathVariable Long id, @RequestBody Product product) {
+        service.save(product);
+    }
+
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable Long id) {
+        service.delete(id);
     }
     
 }
