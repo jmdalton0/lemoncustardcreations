@@ -14,8 +14,8 @@ import com.cloudinary.utils.ObjectUtils;
 @Service
 public class ImageService {
 
-    private final int W = 400;
-    private final int H = 500;
+    private final int W = 300;
+    private final int H = 380;
 
     private final List<String> urls;
 

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout.html}">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payments</title>
+</head>
+
+<body>
+    <main layout:fragment="content">
+        <section class="col align-center p">
+            <h1 class="mb">How Can I Pay for My Creation?</h1>
+            <p class="mb">Step one, get a job. Step 2, work at that job until you have money. Now you are ready to pay for your quilts</p>
+            <p class="mb">Once you have the money, give me the money.</p>
+        </section>
+
+        <section class="col align-center p">
+            <img th:src="@{/img/qr.png}" alt="venmo payments" width="200" class="mb">
+            <a href="https://venmo.com/u/Kari-Dalton-2">Pay On Venmo</a>
+        </section>
+    </main>
+</body>
+
+</html>

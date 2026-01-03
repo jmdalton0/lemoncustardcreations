@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout.html}">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products</title>
+</head>
+
+<body>
+    <main layout:fragment="content">
+        <section>
+            <ul class="row justify-around wrap bg-primary">
+                <li th:each="c : ${categories}" class="m">
+                    <a th:href="@{|/browse/category/${c.getId()}|}" th:text="${c.getName()}"></a>
+                </li>
+            </ul>
+        </section>
+
+        <section id="hero" class="col center hero">
+            <div class="p-l bg-primary">
+                <h2 th:if="${category == null}">Browse All</h2>
+                <h2 th:unless="${category == null}" th:text="${category.getName()}"></h2>
+            </div>
+        </section>
+
+        <section>
+            <ul class="row center wrap">
+                <li th:each="product: ${products}" class="col align-center m">
+                    <img th:each="image: ${product.getImageUrls()}" th:src="${image}" th:alt="${product.getName()}">
+                    <h3 th:text="${product.getName()}" class="mb-s">Name</h3>
+                    <p class="mb-s">Category: <span th:text="${product.getCategory().getName()}"></span></p>
+                    <p>$<span th:text="${product.getPrice()}" class="name">Name</span></p>
+                </li>
+            </ul>
+        </section>
+    </main>
+</body>
+
+</html>

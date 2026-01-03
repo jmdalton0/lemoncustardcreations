@@ -3,10 +3,14 @@ package com.lemoncustardcreations.catalog.product;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.lemoncustardcreations.catalog.category.Category;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 
@@ -20,7 +24,11 @@ public class Product {
 
     private String name;
 
-    private Double price;
+    private String price;
+
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    private Category category;
 
     @Transient
     private List<String> imageUrls;
@@ -29,7 +37,7 @@ public class Product {
         this.imageUrls = new ArrayList<>();
     }
 
-    public Product(Long id, String name, Double price) {
+    public Product(Long id, String name, String price) {
         this.id = id;
         this.name = name;
         this.price = price;
@@ -44,8 +52,12 @@ public class Product {
         return name;
     }
 
-    public Double getPrice() {
+    public String getPrice() {
         return price;
+    }
+
+    public Category getCategory() {
+        return category;
     }
 
     public List<String> getImageUrls() {
@@ -60,8 +72,12 @@ public class Product {
         this.name = name;
     }
 
-    public void setPrice(Double price) {
+    public void setPrice(String price) {
         this.price = price;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
     public void addImageUrl(String url) {

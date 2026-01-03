@@ -30,6 +30,15 @@ public class ProductService {
         return products;
     }
 
+    public List<Product> findByCategoryId(Long id) {
+        List<Product> products = repo.findByCategoryId(id);
+        for (Product product : products) {
+            String imageUrl = imageService.getImageUrl();
+            product.addImageUrl(imageUrl);
+        }
+        return products;
+    }
+
     public void save(Product product) {
         repo.save(product);
     }

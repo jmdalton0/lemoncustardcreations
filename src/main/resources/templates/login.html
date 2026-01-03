@@ -9,19 +9,20 @@
 
 <body>
     <main layout:fragment="content">
-        <h1>Login</h1>
+        <section class="col center fill">
+            <h2 class="mb">Login</h2>
+            <form th:action="@{/login}" method="post" class="col p border">
+                <label for="username" class="mb-s">Username</label>
+                <input id="username" name="username" type="text" required class="mb">
 
-        <form th:action="@{/login}" method="post" class="col">
-            <label for="username">Username</label>
-            <input id="username" name="username" type="text" required class="mb">
+                <label for="password" class="mb-s">Password</label>
+                <input id="password" name="password" type="password" required class="mb">
 
-            <label for="password">Password</label>
-            <input id="password" name="password" type="password" required class="mb">
+                <p th:if="${error}" th:text="${error}" class="mb text-warn">Error</p>
 
-            <p th:if="${error}" th:text="${error}" class="warning">Error</p>
-
-            <button type="submit">Login</button>
-        </form>
+                <button type="submit">Login</button>
+            </form>
+        </section>
     </main>
 </body>
 

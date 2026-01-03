@@ -11,44 +11,50 @@
 
 <body>
     <main layout:fragment="content">
-        <h1>Admin</h1>
+        <section class="p">
+            <h2>Categories</h2>
+        </section>
 
-        <section class="col align-center mb">
+        <section class="p">
             <h2>Products</h2>
             <ul x-data="productStore" class="row wrap justify-center">
                 <template x-for="product in products" :key="product.id || '0'">
-                    <li class="col product-admin">
-
-                        <div class="row justify-between mb-sm">
+                    <li class="col">
+                        <div class="row justify-between mb-s">
                             <label for="name" class="mr">Name</label>
                             <input id="name" name="name" type="text" x-model="product.name"></input>
                         </div>
 
-                        <div class="row justify-between mb-sm">
+                        <div class="row justify-between mb-s">
                             <label for="price" class="mr">Price</label>
-                            <input id="price" name="price" type="number" x-model="product.price"></input>
+                            <input id="price" name="price" type="text" x-model="product.price"></input>
                         </div>
 
-                        <div class="row justify-center mb-sm">
+                        <div class="col justify-center mb-s">
                             <img th:src="@{/img/icons/image-icon.png}" alt="empty image">
-                            <!-- <input id="image" name="image" type="file"> -->
                         </div>
 
-                        <div class="row product-admin-tools">
+                        <div class="row">
                             <template x-if="product.id === null">
-                                <button @click="createProduct(product)" class="create-btn">
+                                <button @click="createProduct(product)">
                                     <img th:src="@{/img/icons/create-icon.png}" alt="create button">
                                 </button>
                             </template>
 
                             <template x-if="product.id !== null">
-                                <button @click="updateProduct(product)" class="update-btn">
+                                <button @click="updateProduct(product)">
                                     <img th:src="@{/img/icons/update-icon.png}" alt="update button">
                                 </button>
                             </template>
 
                             <template x-if="product.id !== null">
-                                <button @click="deleteProduct(product.id)" class="delete-btn">
+                                <button @click="">
+                                    <img th:src="@{/img/icons/upload-img-icon.png}" alt="upload img button">
+                                </button>
+                            </template>
+
+                            <template x-if="product.id !== null">
+                                <button @click="deleteProduct(product.id)">
                                     <img th:src="@{/img/icons/delete-icon.png}" alt="delete button">
                                 </button>
                             </template>
@@ -58,9 +64,11 @@
             </ul>
         </section>
 
-        <form th:action="@{/logout}" method="post" class="form-as-button">
+        <section>
+            <form th:action="@{/logout}" method="post">
                 <button type="submit">Logout</button>
-        </form>
+            </form>
+        </section>
     </main>
 </body>
 

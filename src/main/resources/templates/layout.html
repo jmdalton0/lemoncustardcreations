@@ -14,35 +14,38 @@
     <script defer th:src="@{/js/alpine.js}"></script>
 </head>
 
-<body>
-    <header>
-        <nav class="col align-center">
-            <ul>
-                <li class="mt mb-sm">
+<body class="col fill-view">
+    <header class="sticky px-l py bg-white shadow">
+        <nav class="row mob-col justify-between align-center">
+            <ul class="row align-center">
+                <li class="mr mob-m-0">
                     <a th:href="@{/}">
                         <img id="logo-nav" src="/img/logo.png" alt="lemon custard creations logo">
                     </a>
                 </li>
+                <li class="mr mob-hide">
+                    <a th:href="@{/}"><h1>Lemon Custard Creations</h1></a>
+                </li>
             </ul>
             <ul class="row">
-                <li class="mx">
-                    <a th:href="@{/}">Home</a>
+                <li>
+                    <a th:href="@{/browse}">Browse</a>
                 </li>
-                <li class="mx">
-                    <a th:href="@{/products}">Products</a>
-                </li>
-                <li class="mx">
+                <li class="ml">
                     <a th:href="@{/about}">About</a>
+                </li>
+                <li class="ml">
+                    <a th:href="@{/payments}">Payments</a>
                 </li>
             </ul>
         </nav>
     </header>
 
-    <main layout:fragment="content">content</main>
+    <main layout:fragment="content" class="col fill">content</main>
 
-    <footer class="center">
-        <h6 class="mx"><a th:href="@{/}">Lemon Custard Creations</a></h6>
-        <h6 class="mx"><a th:href="@{/admin}">Admin</a></h6>
+    <footer class="row p-l bg-primary">
+        <h6 class="mr"><a th:href="@{/}">Lemon Custard Creations</a></h6>
+        <h6 class="mr"><a th:href="@{/admin}">Admin</a></h6>
     </footer>
 </body>
 

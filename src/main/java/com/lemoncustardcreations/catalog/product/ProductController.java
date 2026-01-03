@@ -2,7 +2,6 @@ package com.lemoncustardcreations.catalog.product;
 
 import java.util.List;
 
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,7 +22,7 @@ public class ProductController {
     }
 
     @GetMapping
-    public List<Product> index(Model model) {
+    public List<Product> index() {
         return service.findAll();
     }
 

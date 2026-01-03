@@ -3,18 +3,25 @@ package com.lemoncustardcreations.catalog.app;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-
+import com.lemoncustardcreations.catalog.category.CategoryService;
 import com.lemoncustardcreations.catalog.product.ProductService;
 
 @Controller
 @RequestMapping
 public class AppController {
 
+    private final CategoryService categoryService;
+
     private final ProductService productService;
 
-    public AppController(ProductService productService) {
+    public AppController(
+        ProductService productService,
+        CategoryService categoryService
+    ) {
         this.productService = productService;
+        this.categoryService = categoryService;
     }
 
     @GetMapping
@@ -22,15 +29,29 @@ public class AppController {
         return "index";
     }
 
-    @GetMapping("/products")
+    @GetMapping("/browse")
     public String products(Model model) {
+        model.addAttribute("categories", categoryService.findAll());
         model.addAttribute("products", productService.findAll());
-        return "products";
+        return "browse";
+    }
+
+    @GetMapping("/browse/category/{id}")
+    public String category(@PathVariable Long id, Model model) {
+        model.addAttribute("categories", categoryService.findAll());
+        model.addAttribute("category", categoryService.findById(id));
+        model.addAttribute("products", productService.findByCategoryId(id));
+        return "browse";
     }
 
     @GetMapping("/about")
     public String about() {
         return "about";
+    }
+
+    @GetMapping("/payments")
+    public String payments() {
+        return "payments";
     }
 
     @GetMapping("/admin")
