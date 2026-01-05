@@ -4,15 +4,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.lemoncustardcreations.catalog.category.Category;
+import com.lemoncustardcreations.catalog.image.Image;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import jakarta.persistence.Transient;
 
 @Entity
 @Table(name = "product")
@@ -26,22 +28,21 @@ public class Product {
 
     private String price;
 
+    private String description;
+
     @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;
 
-    @Transient
-    private List<String> imageUrls;
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Image> images;
 
     public Product() {
-        this.imageUrls = new ArrayList<>();
-    }
-
-    public Product(Long id, String name, String price) {
-        this.id = id;
-        this.name = name;
-        this.price = price;
-        this.imageUrls = new ArrayList<>();
+        this.id = 0L;
+        this.name = "Product Does Not Exist";
+        this.price = "";
+        this.description = "";
+        this.images = new ArrayList<>();
     }
 
     public Long getId() {
@@ -56,12 +57,16 @@ public class Product {
         return price;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
     public Category getCategory() {
         return category;
     }
 
-    public List<String> getImageUrls() {
-        return imageUrls;
+    public List<Image> getImages() {
+        return images;
     }
 
     public void setId(Long id) {
@@ -76,12 +81,12 @@ public class Product {
         this.price = price;
     }
 
-    public void setCategory(Category category) {
-        this.category = category;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public void addImageUrl(String url) {
-        this.imageUrls.add(url);
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
 }

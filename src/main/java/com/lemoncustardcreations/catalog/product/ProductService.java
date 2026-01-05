@@ -4,39 +4,21 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.lemoncustardcreations.catalog.image.ImageService;
-
 @Service
 public class ProductService {
 
     private final ProductRepository repo;
 
-    private final ImageService imageService;
-
-    public ProductService(
-        ProductRepository repo,
-        ImageService imageService
-    ) {
+    public ProductService(ProductRepository repo) {
         this.repo = repo;
-        this.imageService = imageService;
     }
 
     public List<Product> findAll() {
-        List<Product> products = repo.findAll();
-        for (Product product : products) {
-            String imageUrl = imageService.getImageUrl();
-            product.addImageUrl(imageUrl);
-        }
-        return products;
+        return repo.findAll();
     }
 
     public List<Product> findByCategoryId(Long id) {
-        List<Product> products = repo.findByCategoryId(id);
-        for (Product product : products) {
-            String imageUrl = imageService.getImageUrl();
-            product.addImageUrl(imageUrl);
-        }
-        return products;
+        return repo.findByCategoryId(id);
     }
 
     public void save(Product product) {

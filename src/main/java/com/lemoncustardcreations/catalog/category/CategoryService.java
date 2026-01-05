@@ -19,11 +19,15 @@ public class CategoryService {
 
     public Category findById(Long id) {
         return repo.findById(id)
-            .orElse(new Category(
-                0L,
-                "Unknown Category",
-                "Category Does Not Exist"
-            ));
+            .orElse(new Category());
+    }
+
+    public void save(Category category) {
+        repo.save(category);
+    }
+
+    public void delete(Long id) {
+        repo.deleteById(id);
     }
     
 }

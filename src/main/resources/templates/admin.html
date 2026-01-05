@@ -6,69 +6,183 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin</title>
     <script th:src="@{/js/headers.js}"></script>
+    <script th:src="@{/js/category.js}"></script>
     <script th:src="@{/js/products.js}"></script>
 </head>
 
 <body>
-    <main layout:fragment="content">
-        <section class="p">
-            <h2>Categories</h2>
+    <main layout:fragment="content" x-data="{
+        showCategories: true,
+        showProducts: false, 
+    }">
+
+        <section class="row justify-between bg-secondary">
+            <ul class="row">
+                <li>
+                    <button @click="showCategories = true; showProducts = false" class="btn-secondary">
+                        Categories
+                    </button>
+                </li>
+                <li>
+                    <button @click="showProducts = true; showCategories = false" class="btn-secondary">
+                        Products
+                    </button>
+                </li>
+            </ul>
+            <ul class="row">
+                <li>
+                    <form th:action="@{/logout}" method="post">
+                        <button type="submit" class="btn-secondary">Logout</button>
+                    </form>
+                </li>
+            </ul>
         </section>
 
-        <section class="p">
-            <h2>Products</h2>
-            <ul x-data="productStore" class="row wrap justify-center">
-                <template x-for="product in products" :key="product.id || '0'">
-                    <li class="col">
-                        <div class="row justify-between mb-s">
-                            <label for="name" class="mr">Name</label>
-                            <input id="name" name="name" type="text" x-model="product.name"></input>
-                        </div>
+        <section x-show="showCategories" class="p">
+            <h2 class="mb">Categories</h2>
+            <ul x-data="categoryStore" class="col border-bottom border-left border-right">
+                <template x-for="category in categories" :key="category.id || '0'">
+                    <li class="row border-top">
 
-                        <div class="row justify-between mb-s">
-                            <label for="price" class="mr">Price</label>
-                            <input id="price" name="price" type="text" x-model="product.price"></input>
-                        </div>
-
-                        <div class="col justify-center mb-s">
-                            <img th:src="@{/img/icons/image-icon.png}" alt="empty image">
-                        </div>
-
-                        <div class="row">
-                            <template x-if="product.id === null">
-                                <button @click="createProduct(product)">
+                        <!-- tool buttons -->
+                        <div class="col">
+                            <template x-if="category.id === null">
+                                <button @click="createCategory(category)" class="btn-tool">
                                     <img th:src="@{/img/icons/create-icon.png}" alt="create button">
                                 </button>
                             </template>
 
-                            <template x-if="product.id !== null">
-                                <button @click="updateProduct(product)">
+                            <template x-if="category.id !== null">
+                                <button @click="updateCategory(category)" class="btn-tool border-bottom">
                                     <img th:src="@{/img/icons/update-icon.png}" alt="update button">
                                 </button>
                             </template>
 
-                            <template x-if="product.id !== null">
-                                <button @click="">
+                            <template x-if="category.id !== null">
+                                <button @click="" class="btn-tool border-bottom">
                                     <img th:src="@{/img/icons/upload-img-icon.png}" alt="upload img button">
                                 </button>
                             </template>
 
-                            <template x-if="product.id !== null">
-                                <button @click="deleteProduct(product.id)">
+                            <template x-if="category.id !== null">
+                                <button @click="deleteCategory(category.id)" class="btn-tool">
                                     <img th:src="@{/img/icons/delete-icon.png}" alt="delete button">
                                 </button>
                             </template>
                         </div>
+
+                        <!-- basic info -->
+                        <div class="col py-s pl-s">
+                            <div class="row mb-s">
+                                <label for="name" class="mr-s">Name</label>
+                                <input id="name" name="name" type="text" x-model="category.name"></input>
+                            </div>
+                        </div>
+
+                        <!-- large info -->
+                        <div class="col py-s pl-s">
+                            <label for="description" class="mr-s">Description</label>
+                            <input id="description" name="description" type="text"
+                                x-model="category.description"></input>
+                        </div>
+
+                        <!-- large info -->
+                        <div class="col py-s pl-s">
+                            <label for="details" class="mr-s">Details</label>
+                            <input id="details" name="details" type="text" x-model="category.details"></input>
+                        </div>
+
+                        <!-- image upload -->
+                        <div class="col">
+                            <template x-if="category.id !== null">
+                                <input id="image" name="image" type="file" accept="image/*"
+                                    @change="uploadImage($event.target.files[0], category.id)">
+                            </template>
+
+                            <div class="row">
+                                <template x-for="image in category.images">
+                                    <img :src="image.url" alt="test">
+                                </template>
+                            </div>
+                        </div>
+
                     </li>
                 </template>
             </ul>
         </section>
 
-        <section>
-            <form th:action="@{/logout}" method="post">
-                <button type="submit">Logout</button>
-            </form>
+        <section x-show="showProducts" class="p">
+            <h2 class="mb">Products</h2>
+            <ul x-data="productStore" class="col border-bottom border-left border-right">
+                <template x-for="product in products" :key="product.id || '0'">
+                    <li class="row border-top">
+
+                        <!-- tool buttons -->
+                        <div class="col">
+                            <template x-if="product.id === null">
+                                <button @click="createProduct(product)" class="btn-tool">
+                                    <img th:src="@{/img/icons/create-icon.png}" alt="create button">
+                                </button>
+                            </template>
+
+                            <template x-if="product.id !== null">
+                                <button @click="updateProduct(product)" class="btn-tool border-bottom">
+                                    <img th:src="@{/img/icons/update-icon.png}" alt="update button">
+                                </button>
+                            </template>
+
+                            <template x-if="product.id !== null">
+                                <button @click="" class="btn-tool border-bottom">
+                                    <img th:src="@{/img/icons/upload-img-icon.png}" alt="upload img button">
+                                </button>
+                            </template>
+
+                            <template x-if="product.id !== null">
+                                <button @click="deleteProduct(product.id)" class="btn-tool">
+                                    <img th:src="@{/img/icons/delete-icon.png}" alt="delete button">
+                                </button>
+                            </template>
+                        </div>
+
+                        <!-- basic info -->
+                        <div class="col py-s pl-s">
+                            <div class="row mb-s">
+                                <label for="name" class="mr-s">Name</label>
+                                <input id="name" name="name" type="text" x-model="product.name"></input>
+                            </div>
+
+                            <div class="row">
+                                <label for="price" class="mr-s">Price</label>
+                                <input id="price" name="price" type="text" x-model="product.price"></input>
+                            </div>
+                        </div>
+
+                        <!-- large info -->
+                        <div class="col py-s pl-s">
+                            <label for="description" class="mr-s">Description</label>
+                            <input id="description" name="description" type="text"
+                                x-model="product.description"></input>
+                        </div>
+
+                        <!-- image upload -->
+                        <div class="col">
+                            <template x-if="product.id !== null">
+                                <input id="image" name="image" type="file" accept="image/*"
+                                    @change="uploadImage($event.target.files[0], product.id)">
+                            </template>
+
+                            <div class="row">
+                                <template x-for="image in product.images">
+                                    <img :src="image.url" alt="test">
+                                </template>
+                            </div>
+                        </div>
+
+                    </li>
+                </template>
+            </ul>
         </section>
+
     </main>
 </body>
 

@@ -1,9 +1,16 @@
 package com.lemoncustardcreations.catalog.category;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import com.lemoncustardcreations.catalog.image.Image;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -18,12 +25,17 @@ public class Category {
 
     private String description;
 
-    public Category() {}
+    private String details;
 
-    public Category(Long id, String name, String description) {
-        this.id = id;
-        this.name = name;
-        this.description = description;
+    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Image> images;
+
+    public Category() {
+        this.id = 0L;
+        this.name = "Category Not Found";
+        this.description = "";
+        this.details = "";
+        this.images = new ArrayList<>();
     }
 
     public Long getId() {
@@ -38,6 +50,14 @@ public class Category {
         return description;
     }
 
+    public String getDetails() {
+        return details;
+    }
+
+    public List<Image> getImages() {
+        return images;
+    }
+
     public void setId(Long id) {
         this.id = id;
     }
@@ -49,5 +69,9 @@ public class Category {
     public void setDescription(String description) {
         this.description = description;
     }
-    
+
+    public void setDetails(String details) {
+        this.details = details;
+    }
+
 }

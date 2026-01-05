@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout.html}">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products</title>
+</head>
+
+<body>
+    <main layout:fragment="content">
+        <section th:unless="${#arrays.isEmpty(categories)}">
+            <ul class="row justify-around wrap bg-primary">
+                <li th:each="c : ${categories}" class="m">
+                    <a th:href="@{|/categories/${c.getId()}|}" th:text="${c.getName()}"></a>
+                </li>
+            </ul>
+        </section>
+
+        <section th:unless="${#arrays.isEmpty(categories)}">
+            <ul>
+                <li th:each="category : ${categories}">
+                    <div class="row">
+                        <div class="col fill center">
+                            <h2 th:text="${category.getName()}" class="mb-s"></h2>
+                            <p th:text="${category.getDescription()}"></p>
+                        </div>
+                        <div class="fill">
+                            <img th:each="image: ${category.getImages()}" th:src="${image.getUrl()}" th:alt="${image.getPublicId()}">
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </section>
+    </main>
+</body>
+
+</html>

@@ -29,19 +29,19 @@ public class AppController {
         return "index";
     }
 
-    @GetMapping("/browse")
+    @GetMapping("/categories")
     public String products(Model model) {
         model.addAttribute("categories", categoryService.findAll());
         model.addAttribute("products", productService.findAll());
-        return "browse";
+        return "categories";
     }
 
-    @GetMapping("/browse/category/{id}")
+    @GetMapping("/categories/{id}")
     public String category(@PathVariable Long id, Model model) {
         model.addAttribute("categories", categoryService.findAll());
         model.addAttribute("category", categoryService.findById(id));
         model.addAttribute("products", productService.findByCategoryId(id));
-        return "browse";
+        return "category";
     }
 
     @GetMapping("/about")

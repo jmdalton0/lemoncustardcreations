@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.lemoncustardcreations.catalog.util.DTOMapper;
+
 @RestController
 @RequestMapping("/api/products")
 public class ProductController {
@@ -22,8 +24,11 @@ public class ProductController {
     }
 
     @GetMapping
-    public List<Product> index() {
-        return service.findAll();
+    public List<ProductDTO> index() {
+        return service.findAll()
+            .stream()
+            .map(DTOMapper::productDTO)
+            .toList();
     }
 
     @PostMapping
