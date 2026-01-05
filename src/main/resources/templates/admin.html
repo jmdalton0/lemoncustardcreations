@@ -40,32 +40,32 @@
 
         <section x-show="showCategories" class="p">
             <h2 class="mb">Categories</h2>
-            <ul x-data="categoryStore" class="col border-bottom border-left border-right">
-                <template x-for="category in categories" :key="category.id || '0'">
+            <ul class="col border-bottom border-left border-right">
+                <template x-for="category in $store.categoryStore.categories" :key="category.id || '0'">
                     <li class="row border-top">
 
                         <!-- tool buttons -->
                         <div class="col">
                             <template x-if="category.id === null">
-                                <button @click="createCategory(category)" class="btn-tool">
+                                <button @click="$store.categoryStore.createCategory(category)" class="btn-tool">
                                     <img th:src="@{/img/icons/create-icon.png}" alt="create button">
                                 </button>
                             </template>
 
                             <template x-if="category.id !== null">
-                                <button @click="moveUp(category)" class="btn-tool border-bottom btn-tool-move-up">
+                                <button @click="$store.categoryStore.moveUp(category)" class="btn-tool btn-tool-move-up border-bottom">
                                     <img th:src="@{/img/icons/move-up-icon.png}" alt="move up button">
                                 </button>
                             </template>
 
                             <template x-if="category.id !== null">
-                                <button @click="updateCategory(category)" class="btn-tool border-bottom btn-tool-update">
+                                <button @click="$store.categoryStore.updateCategory(category)" class="btn-tool border-bottom">
                                     <img th:src="@{/img/icons/update-icon.png}" alt="update button">
                                 </button>
                             </template>
 
                             <template x-if="category.id !== null">
-                                <button @click="deleteCategory(category.id)" class="btn-tool btn-tool-delete">
+                                <button @click="$store.categoryStore.deleteCategory(category.id)" class="btn-tool btn-tool-delete">
                                     <img th:src="@{/img/icons/delete-icon.png}" alt="delete button">
                                 </button>
                             </template>
@@ -93,15 +93,15 @@
                         </div>
 
                         <!-- image upload -->
-                        <div class="col">
+                        <div class="col py-s pl-s">
                             <template x-if="category.id !== null">
                                 <input id="image" name="image" type="file" accept="image/*"
-                                    @change="uploadImage($event.target.files[0], category.id)">
+                                    @change="$store.categoryStore.uploadImage($event.target.files[0], category.id)">
                             </template>
 
                             <div class="row">
                                 <template x-for="image in category.images">
-                                    <img :src="image.url" alt="test">
+                                    <img :src="image.url" alt="test" class="thumbnail">
                                 </template>
                             </div>
                         </div>
@@ -126,19 +126,19 @@
                             </template>
 
                             <template x-if="product.id !== null">
+                                <button @click="moveUp(product)" class="btn-tool btn-tool-move-up border-bottom">
+                                    <img th:src="@{/img/icons/move-up-icon.png}" alt="move up button">
+                                </button>
+                            </template>
+
+                            <template x-if="product.id !== null">
                                 <button @click="updateProduct(product)" class="btn-tool border-bottom">
                                     <img th:src="@{/img/icons/update-icon.png}" alt="update button">
                                 </button>
                             </template>
 
                             <template x-if="product.id !== null">
-                                <button @click="" class="btn-tool border-bottom">
-                                    <img th:src="@{/img/icons/upload-img-icon.png}" alt="upload img button">
-                                </button>
-                            </template>
-
-                            <template x-if="product.id !== null">
-                                <button @click="deleteProduct(product.id)" class="btn-tool">
+                                <button @click="deleteProduct(product.id)" class="btn-tool btn-tool-delete">
                                     <img th:src="@{/img/icons/delete-icon.png}" alt="delete button">
                                 </button>
                             </template>
@@ -154,6 +154,15 @@
                             <div class="row">
                                 <label for="price" class="mr-s">Price</label>
                                 <input id="price" name="price" type="text" x-model="product.price"></input>
+                            </div>
+
+                            <div class="row">
+                                <label for="category" class="mr-s">Category</label>
+                                <select x-model="product.categoryId">
+                                    <template x-for="category in $store.categoryStore.categories">
+                                        <option :value="category.id" x-text="category.name"></option>
+                                    </template>
+                                </select>
                             </div>
                         </div>
 

@@ -22,7 +22,15 @@ public class CategoryService {
             .orElse(new Category());
     }
 
-    public void save(Category category) {
+    public void save(CategoryDTO categoryDTO) {
+        Category category = new Category();
+        if (categoryDTO.id() != null) {
+            category = repo.findById(categoryDTO.id()).orElse(null);
+        }
+        category.setName(categoryDTO.name());
+        category.setDescription(categoryDTO.description());
+        category.setDetails(categoryDTO.details());
+        category.setPosition(categoryDTO.position());
         if (category.getPosition() == null) {
             category.setPosition((int) repo.count());
         }
@@ -45,11 +53,11 @@ public class CategoryService {
         }
 
         mover.setPosition(mover.getPosition() - 1);
-        save(mover);
+        repo.save(mover);
 
         if (moved != null) {
             moved.setPosition(moved.getPosition() + 1);
-            save(moved);
+            repo.save(moved);
         }
     }
     

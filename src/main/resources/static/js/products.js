@@ -18,6 +18,7 @@ document.addEventListener('alpine:init', () => {
                 id: null,
                 name: '',
                 price: 0,
+                position: null,
             };
         },
 
@@ -26,6 +27,14 @@ document.addEventListener('alpine:init', () => {
                 method: 'POST',
                 headers: getHeaders(),
                 body: JSON.stringify(product)
+            });
+            await this.refresh();
+        },
+
+        async moveUp(product) {
+            await fetch(`/api/products/${product.id}/position`, {
+                method: 'PATCH',
+                headers: getHeaders(),
             });
             await this.refresh();
         },

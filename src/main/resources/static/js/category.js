@@ -1,5 +1,5 @@
 document.addEventListener('alpine:init', () => {
-    Alpine.data('categoryStore', () => ({
+    Alpine.store('categoryStore', {
 
         categories: [],
 
@@ -75,6 +75,6 @@ document.addEventListener('alpine:init', () => {
             await this.refresh();
         }
 
-    }))
+    });
 });
 

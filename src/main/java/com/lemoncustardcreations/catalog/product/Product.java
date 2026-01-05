@@ -30,6 +30,8 @@ public class Product {
 
     private String description;
 
+    private Integer position;
+
     @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;
@@ -42,6 +44,7 @@ public class Product {
         this.name = "Product Does Not Exist";
         this.price = "";
         this.description = "";
+        this.position = null;
         this.images = new ArrayList<>();
     }
 
@@ -59,6 +62,10 @@ public class Product {
 
     public String getDescription() {
         return description;
+    }
+
+    public Integer getPosition() {
+        return position;
     }
 
     public Category getCategory() {
@@ -83,6 +90,10 @@ public class Product {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public void setPosition(Integer position) {
+        this.position = position;
     }
 
     public void setCategory(Category category) {

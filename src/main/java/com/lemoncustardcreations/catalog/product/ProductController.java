@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -32,18 +33,23 @@ public class ProductController {
     }
 
     @PostMapping
-    public void create(@RequestBody Product product) {
+    public void create(@RequestBody ProductDTO product) {
         service.save(product);
     }
 
     @PutMapping("/{id}")
-    public void update(@PathVariable Long id, @RequestBody Product product) {
+    public void update(@PathVariable Long id, @RequestBody ProductDTO product) {
         service.save(product);
     }
 
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id) {
         service.delete(id);
+    }
+
+    @PatchMapping("/{id}/position")
+    public void patchPosition(@PathVariable Long id) {
+        service.incPosition(id);
     }
     
 }

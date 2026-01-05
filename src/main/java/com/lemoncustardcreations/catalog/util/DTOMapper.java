@@ -29,7 +29,6 @@ public class DTOMapper {
         );
     }
 
-
     public static ProductDTO productDTO(Product product) {
         if (product == null) return null;
 
@@ -45,6 +44,7 @@ public class DTOMapper {
             product.getName(),
             product.getPrice(),
             product.getDescription(),
+            product.getPosition(),
             categoryId,
             images
         );

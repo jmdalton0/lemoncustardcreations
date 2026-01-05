@@ -37,7 +37,7 @@ public class Category {
         this.name = "Category Not Found";
         this.description = "";
         this.details = "";
-        this.position = 0;
+        this.position = null;
         this.images = new ArrayList<>();
     }
 

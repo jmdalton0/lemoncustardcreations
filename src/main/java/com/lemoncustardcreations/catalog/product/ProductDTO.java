@@ -9,6 +9,7 @@ public record ProductDTO(
     String name,
     String price,
     String description,
+    Integer position,
     Long categoryId,
     List<ImageDTO> images
 ) {}

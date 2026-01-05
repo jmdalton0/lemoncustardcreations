@@ -33,12 +33,12 @@ public class CategoryController {
     }
 
     @PostMapping
-    public void create(@RequestBody Category category) {
+    public void create(@RequestBody CategoryDTO category) {
         service.save(category);
     }
 
     @PutMapping("/{id}")
-    public void update(@PathVariable Long id, @RequestBody Category category) {
+    public void update(@PathVariable Long id, @RequestBody CategoryDTO category) {
         service.save(category);
     }
 
