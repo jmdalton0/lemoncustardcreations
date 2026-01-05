@@ -27,6 +27,8 @@ public class Category {
 
     private String details;
 
+    private Integer position;
+
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Image> images;
 
@@ -35,6 +37,7 @@ public class Category {
         this.name = "Category Not Found";
         this.description = "";
         this.details = "";
+        this.position = 0;
         this.images = new ArrayList<>();
     }
 
@@ -54,6 +57,10 @@ public class Category {
         return details;
     }
 
+    public Integer getPosition() {
+        return position;
+    }
+
     public List<Image> getImages() {
         return images;
     }
@@ -68,6 +75,10 @@ public class Category {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public void setPosition(Integer position) {
+        this.position = position;
     }
 
     public void setDetails(String details) {

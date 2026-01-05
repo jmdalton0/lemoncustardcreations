@@ -24,6 +24,7 @@ public class DTOMapper {
             category.getName(),
             category.getDescription(),
             category.getDetails(),
+            category.getPosition(),
             images
         );
     }

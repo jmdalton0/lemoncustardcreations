@@ -312,6 +312,22 @@ img {
     background-color: var(--primary-dark-hover);
 }
 
+.btn-tool-move-up {
+    background-color: blue;
+}
+
+.btn-tool-move-up:hover {
+    background-color: darkblue;
+}
+
+.btn-tool-delete {
+    background-color: red;
+}
+
+.btn-tool-delete:hover {
+    background-color: darkred;
+}
+
 .btn-tool img {
     width: 100%;
 }

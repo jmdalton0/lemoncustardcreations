@@ -19,6 +19,7 @@ document.addEventListener('alpine:init', () => {
                 name: '',
                 description: '',
                 details: '',
+                position: null,
             };
         },
 
@@ -27,6 +28,14 @@ document.addEventListener('alpine:init', () => {
                 method: 'POST',
                 headers: getHeaders(),
                 body: JSON.stringify(category)
+            });
+            await this.refresh();
+        },
+
+        async moveUp(category) {
+            await fetch(`/api/categories/${category.id}/position`, {
+                method: 'PATCH',
+                headers: getHeaders(),
             });
             await this.refresh();
         },

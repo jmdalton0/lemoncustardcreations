@@ -9,5 +9,6 @@ public record CategoryDTO(
     String name,
     String description,
     String details,
+    Integer position,
     List<ImageDTO> images
 ) {}

@@ -53,19 +53,19 @@
                             </template>
 
                             <template x-if="category.id !== null">
-                                <button @click="updateCategory(category)" class="btn-tool border-bottom">
+                                <button @click="moveUp(category)" class="btn-tool border-bottom btn-tool-move-up">
+                                    <img th:src="@{/img/icons/move-up-icon.png}" alt="move up button">
+                                </button>
+                            </template>
+
+                            <template x-if="category.id !== null">
+                                <button @click="updateCategory(category)" class="btn-tool border-bottom btn-tool-update">
                                     <img th:src="@{/img/icons/update-icon.png}" alt="update button">
                                 </button>
                             </template>
 
                             <template x-if="category.id !== null">
-                                <button @click="" class="btn-tool border-bottom">
-                                    <img th:src="@{/img/icons/upload-img-icon.png}" alt="upload img button">
-                                </button>
-                            </template>
-
-                            <template x-if="category.id !== null">
-                                <button @click="deleteCategory(category.id)" class="btn-tool">
+                                <button @click="deleteCategory(category.id)" class="btn-tool btn-tool-delete">
                                     <img th:src="@{/img/icons/delete-icon.png}" alt="delete button">
                                 </button>
                             </template>
