@@ -18,15 +18,15 @@
         </section>
 
         <section th:unless="${#arrays.isEmpty(categories)}">
-            <ul>
+            <ul class="mb-l">
                 <li th:each="category : ${categories}">
-                    <div class="row">
-                        <div class="col fill center">
-                            <h2 th:text="${category.getName()}" class="mb-s"></h2>
-                            <p th:text="${category.getDescription()}"></p>
-                        </div>
-                        <div class="fill">
-                            <img th:each="image: ${category.getImages()}" th:src="${image.getUrl()}" th:alt="${image.getPublicId()}">
+                    <div class="col align-center px-l pt-l">
+                        <h2 th:text="${category.getName()}" class="mb-s"></h2>
+                        <p th:text="${category.getDescription()}" class="mb"></p>
+                        <div class="row justify-around w-100">
+                            <div th:each="image : ${category.getImages()}" class="catalog-entry w-30 p shadow">
+                                <img th:src="${image.getUrl()}" th:alt="${image.getPublicId()}">
+                            </div>
                         </div>
                     </div>
                 </li>

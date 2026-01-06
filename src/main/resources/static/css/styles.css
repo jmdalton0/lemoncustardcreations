@@ -114,7 +114,7 @@ img {
     flex-direction: column;
 }
 
-.fill {
+.flex {
     flex: 1;
 }
 
@@ -223,6 +223,32 @@ img {
     margin: 2rem;
 }
 
+.mx-l {
+    margin-left: 2rem;
+    margin-right: 2rem;
+}
+
+.my-l {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.mt-l {
+    margin-top: 2rem;
+}
+
+.mb-l {
+    margin-bottom: 2rem;
+}
+
+.ml-l {
+    margin-left: 2rem;
+}
+
+.mr-l {
+    margin-right: 2rem;
+}
+
 .p {
     padding: 1rem;
 }
@@ -278,6 +304,22 @@ img {
 
 .py-l {
     padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+.pt-l {
+    padding-top: 2rem;
+}
+
+.pb-l {
+    padding-bottom: 2rem;
+}
+
+.pl-l {
+    padding-bottom: 2rem;
+}
+
+.pl-r {
     padding-bottom: 2rem;
 }
 
@@ -396,6 +438,18 @@ img {
 
 /* sizing */
 
+.w-100 {
+    width: 100%;
+}
+
+.w-50 {
+    width: 50%;
+}
+
+.w-30 {
+    width: 30%;
+}
+
 .logo {
     width: 8rem;
 }
@@ -403,6 +457,16 @@ img {
 .thumbnail {
     width: 4rem;
     height: 4rem;
+}
+
+.catalog-entry {
+    height: 20rem;
+}
+
+.catalog-entry img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 /* mobile */

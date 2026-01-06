@@ -19,12 +19,9 @@
 
         <section th:unless="${category == null}">
             <div class="row">
-                <div class="col fill center">
+                <div class="col flex center">
                     <h2 th:text="${category.getName()}"></h2>
                     <p th:text="${category.getDescription()}"></p>
-                </div>
-                <div class="fill">
-                    <img th:each="image: ${category.getImages()}" th:src="${image.getUrl()}" th:alt="${image.getPublicId()}">
                 </div>
             </div>
         </section>

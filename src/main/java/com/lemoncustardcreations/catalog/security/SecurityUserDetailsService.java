@@ -31,7 +31,7 @@ public class SecurityUserDetailsService implements UserDetailsService {
 
         return User
             .withUsername(this.username)
-            .password(passwordEncoder.encode(this.password))
+            .password(this.password)
             .build();
     }
     
