@@ -49,6 +49,11 @@ public class AppController {
         return "about";
     }
 
+    @GetMapping("/contact")
+    public String contact() {
+        return "contact";
+    }
+
     @GetMapping("/payments")
     public String payments() {
         return "payments";

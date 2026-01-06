@@ -454,6 +454,28 @@ img {
     width: 8rem;
 }
 
+/* shape */
+
+.corners {
+    border-radius: 10px;
+}
+
+.circle {
+    border-radius: 100%;
+}
+
+/* animations */
+
+.hover-grow {
+    transition: all 0.2s ease;
+}
+
+.hover-grow:hover {
+    transform: scale(1.1, 1.1); 
+}
+
+/* components */
+
 .thumbnail {
     width: 4rem;
     height: 4rem;
@@ -471,7 +493,7 @@ img {
 
 /* mobile */
 
-@media (max-width: 600px) {
+@media (max-width: 800px) {
 
     .mob-hide {
         display: none;
@@ -490,6 +512,10 @@ img {
     .mob-m-0 {
         margin: 0;
     }
+
+    .mob-mb {
+        margin-bottom: 1rem;
+    }
     
 }
 
@@ -497,9 +523,10 @@ img {
 
 #hero {
     flex: 1;
-    background-image: url(https://res.cloudinary.com/dybexsys6/image/upload/v1767407703/purple-peach_r6nqay.jpg);
+    background-image: url('/img/hero-home.jpg');
     background-repeat: no-repeat;
     background-position: center;
+    background-size: cover;
     background-color: var(--white);
 }
 

@@ -4,14 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="_csrf" th:content="${_csrf.token}"/>
-    <meta name="_csrf_header" th:content="${_csrf.headerName}"/>
+    <meta name="_csrf" th:content="${_csrf.token}" />
+    <meta name="_csrf_header" th:content="${_csrf.headerName}" />
     <title layout:title-pattern="$CONTENT_TITLE - $LAYOUT_TITLE">Lemon Custard Creations</title>
     <link rel="stylesheet" th:href="@{/css/styles.css}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Delius&display=swap" rel="stylesheet">
     <script defer th:src="@{/js/alpine.js}"></script>
+    <script src="https://kit.fontawesome.com/fbdf75e966.js" crossorigin="anonymous"></script>
 </head>
 
 <body class="col">
@@ -24,28 +25,65 @@
                     </a>
                 </li>
                 <li class="mr mob-hide">
-                    <a th:href="@{/}"><h1>Lemon Custard Creations</h1></a>
+                    <a th:href="@{/}">
+                        <h1>Lemon Custard Creations</h1>
+                    </a>
                 </li>
             </ul>
-            <ul class="row">
-                <li>
-                    <a th:href="@{/categories}">Browse</a>
-                </li>
-                <li class="ml">
-                    <a th:href="@{/about}">About</a>
-                </li>
-                <li class="ml">
-                    <a th:href="@{/payments}">Payments</a>
-                </li>
-            </ul>
+            <div class="row mob-col">
+                <ul class="row justify-center mob-mb">
+                    <li>
+                        <a th:href="@{/categories}">Browse</a>
+                    </li>
+                    <li class="ml">
+                        <a th:href="@{/about}">About</a>
+                    </li>
+                    <li class="ml">
+                        <a th:href="@{/contact}">Contact</a>
+                    </li>
+                    <li class="ml">
+                        <a th:href="@{/payments}">Payments</a>
+                    </li>
+                </ul>
+                <ul class="row justify-center">
+                    <li class="ml">
+                        <a href="mailto:lemoncustardco@gmail.com">
+                            <i class="fa-regular fa-envelope fa-xl"></i>
+                        </a>
+                    </li>
+                    <li class="ml">
+                        <a href="https://www.instagram.com/lemoncustardcreationsbykari">
+                            <i class="fa-brands fa-instagram fa-xl"></i>
+                        </a>
+                    </li>
+                    <li class="ml">
+                        <a href="https://www.facebook.com/lemon.custard.creations">
+                            <i class="fa-brands fa-facebook fa-xl"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </nav>
     </header>
 
     <main layout:fragment="content" class="col flex">content</main>
 
-    <footer class="row p-l bg-primary">
-        <h6 class="mr"><a th:href="@{/}">Lemon Custard Creations</a></h6>
-        <h6 class="mr"><a th:href="@{/admin}">Admin</a></h6>
+    <footer class="row mob-col justify-between p-l bg-primary">
+        <div class="row mob-col mob-mb">
+            <h4 class="mr mob-mb"><a th:href="@{/}">Lemon Custard Creations</a></h4>
+            <h4 class="mr"><a th:href="@{/admin}">Admin</a></h4>
+        </div>
+        <div class="row">
+            <a href="mailto:lemoncustardco@gmail.com">
+                <i class="fa-regular fa-envelope fa-xl"></i>
+            </a>
+            <a href="https://www.instagram.com/lemoncustardcreationsbykari" class="ml">
+                <i class="fa-brands fa-instagram fa-xl"></i>
+            </a>
+            <a href="https://www.facebook.com/lemon.custard.creations" class="ml">
+                <i class="fa-brands fa-facebook fa-xl"></i>
+            </a>
+        </div>
     </footer>
 </body>
 
