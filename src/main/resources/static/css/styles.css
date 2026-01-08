@@ -99,9 +99,20 @@ img {
 
 /* layout */
 
+.relative {
+    position: relative;
+}
+
+.absolute {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
 .sticky {
     position: sticky;
     top: 0;
+    z-index: 1;
 }
 
 .row {
@@ -155,6 +166,38 @@ img {
 .wrap {
     display: flex;
     flex-wrap: wrap;
+}
+
+/* sizing */
+
+.w-100 {
+    width: 100%;
+}
+
+.w-50 {
+    width: 50%;
+}
+
+.w-30 {
+    width: 30%;
+}
+
+.h-100 {
+    height: 100%;
+}
+
+.logo {
+    width: 8rem;
+}
+
+/* shape */
+
+.corners {
+    border-radius: 10px;
+}
+
+.circle {
+    border-radius: 100%;
 }
 
 /* spacing */
@@ -347,10 +390,21 @@ img {
     background-color: var(--secondary-dark);
 }
 
+.btn-transparent {
+    color: var(--white);
+    background-color: rgba(200, 200, 200, 0.7);
+    opacity: 0;
+}
+
+.btn-transparent:hover {
+    opacity: 1;
+}
+
 .btn-tool {
     width: 2rem;
     height: 100%;
     padding: 0.2rem;
+    color: var(--white);
     background-color: var(--primary-dark);
 }
 
@@ -434,34 +488,6 @@ img {
 
 .shadow {
     box-shadow: 0 0 5px #ccc;
-}
-
-/* sizing */
-
-.w-100 {
-    width: 100%;
-}
-
-.w-50 {
-    width: 50%;
-}
-
-.w-30 {
-    width: 30%;
-}
-
-.logo {
-    width: 8rem;
-}
-
-/* shape */
-
-.corners {
-    border-radius: 10px;
-}
-
-.circle {
-    border-radius: 100%;
 }
 
 /* animations */

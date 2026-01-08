@@ -1,5 +1,7 @@
 package com.lemoncustardcreations.catalog.image;
 
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -30,6 +32,11 @@ public class ImageController {
         @RequestParam() MultipartFile image 
     ) {
         service.createForProduct(productId, image);
+    }
+
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable Long id) {
+        service.delete(id);
     }
     
 }

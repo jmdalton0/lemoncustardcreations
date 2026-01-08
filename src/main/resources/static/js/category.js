@@ -73,7 +73,16 @@ document.addEventListener('alpine:init', () => {
                 body: formData,
             });
             await this.refresh();
-        }
+        },
+
+        async deleteImage(id) {
+            console.log(id);
+            await fetch(`/api/images/${id}`, {
+                method: 'DELETE',
+                headers: getHeaders(), 
+            });
+            await this.refresh();
+        },
 
     });
 });

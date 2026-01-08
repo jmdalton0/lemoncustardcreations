@@ -46,11 +46,12 @@ public class ImageService {
 
     public void createForCategory(Long categoryId, MultipartFile imageBytes) {
         try {
-            Map res = this.cloudinary.uploader().upload(imageBytes.getBytes(), ObjectUtils.asMap(
-                "use_filename", true,
-                "unique_filename", true,
-                "overwrite", true
-            ));
+            Map res = this.cloudinary.uploader()
+                .upload(imageBytes.getBytes(), ObjectUtils.asMap(
+                    "use_filename", true,
+                    "unique_filename", true,
+                    "overwrite", true
+                ));
             String url = res.get("secure_url").toString();
             String publicId = res.get("public_id").toString();
 
@@ -69,11 +70,12 @@ public class ImageService {
 
     public void createForProduct(Long productId, MultipartFile imageBytes) {
         try {
-            Map res = this.cloudinary.uploader().upload(imageBytes.getBytes(), ObjectUtils.asMap(
-                "use_filename", true,
-                "unique_filename", true,
-                "overwrite", true
-            ));
+            Map res = this.cloudinary.uploader()
+                .upload(imageBytes.getBytes(), ObjectUtils.asMap(
+                    "use_filename", true,
+                    "unique_filename", true,
+                    "overwrite", true
+                ));
             String url = res.get("secure_url").toString();
             String publicId = res.get("public_id").toString();
 
@@ -90,5 +92,18 @@ public class ImageService {
         }
     }
 
+    public void delete(Long id) {
+        Image image = imageRepo.findById(id)
+            .orElse(null);
+        if (image == null) return;
+
+        try {
+            this.cloudinary.uploader()
+                .destroy(image.getPublicId(), ObjectUtils.emptyMap());
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+        imageRepo.deleteById(id);
+    }
 
 }

@@ -101,7 +101,12 @@
 
                             <div class="row">
                                 <template x-for="image in category.images">
-                                    <img :src="image.url" alt="test" class="thumbnail">
+                                    <div class="relative thumbnail mr-s">
+                                        <img :src="image.url" alt="test" class="w-100 h-100">
+                                        <button @click="$store.categoryStore.deleteImage(image.id)" class="absolute w-100 h-100 btn-transparent">
+                                            <i class="fa-regular fa-circle-xmark fa-2x"></i>
+                                        </button>
+                                    </div>
                                 </template>
                             </div>
                         </div>
@@ -174,7 +179,7 @@
                         </div>
 
                         <!-- image upload -->
-                        <div class="col">
+                        <div class="col py-s pl-s">
                             <template x-if="product.id !== null">
                                 <input id="image" name="image" type="file" accept="image/*"
                                     @change="uploadImage($event.target.files[0], product.id)">
@@ -182,7 +187,12 @@
 
                             <div class="row">
                                 <template x-for="image in product.images">
-                                    <img :src="image.url" alt="test">
+                                    <div class="relative thumbnail mr-s">
+                                        <img :src="image.url" alt="test" class="w-100 h-100">
+                                        <button @click="$store.categoryStore.deleteImage(image.id)" class="absolute w-100 h-100 btn-transparent">
+                                            <i class="fa-regular fa-circle-xmark fa-2x"></i>
+                                        </button>
+                                    </div>
                                 </template>
                             </div>
                         </div>
