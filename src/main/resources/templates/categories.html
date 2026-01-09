@@ -23,9 +23,11 @@
                     <div class="col align-center px-l pt-l">
                         <h2 th:text="${category.getName()}" class="mb-s"></h2>
                         <p th:text="${category.getDescription()}" class="mb"></p>
-                        <div class="row justify-around w-100">
-                            <div th:each="image : ${category.getImages()}" class="catalog-entry w-30 p shadow">
-                                <img th:src="${image.getUrl()}" th:alt="${image.getPublicId()}">
+                        <div class="row justify-center wrap">
+                            <div th:each="image : ${category.getImages()}" class="m p corners shadow">
+                                <div class="catalog">
+                                    <img th:src="${image.getUrl()}" th:alt="${image.getPublicId()}">
+                                </div>
                             </div>
                         </div>
                     </div>

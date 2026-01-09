@@ -17,23 +17,19 @@
             </ul>
         </section>
 
-        <section th:unless="${category == null}">
-            <div class="row">
-                <div class="col flex center px-l pt-l">
-                    <h2 th:text="${category.getName()}"></h2>
-                    <p th:text="${category.getDescription()}"></p>
-                </div>
-            </div>
-        </section>
-
-        <section th:unless="${category == null}" class="p">
+        <section th:unless="${category == null}" class="col align-center px-l pt-l">
+            <h2 th:text="${category.getName()}" class="mb-s"></h2>
+            <p th:text="${category.getDescription()}" class="mb-s"></p>
             <p th:text="${category.getDetails()}"></p>
         </section>
 
         <section th:unless="${#arrays.isEmpty(products)}">
-            <ul class="row center wrap">
-                <li th:each="product: ${products}" class="col align-center m">
-                    <img th:each="image: ${product.getImages()}" th:src="${image.getUrl()}" th:alt="${image.getPublicId()}">
+            <ul class="row justify-center wrap p">
+                <li th:each="product: ${products}" class="col align-center m p corners shadow">
+                    <div class="catalog mb-s">
+                        <img th:src="${ product.getImages().get(0).getUrl()}" th:alt="${ product.getImages().get(0).getPublicId()}">
+                    </div>
+                    <!-- <img th:each="image: ${product.getImages()}" th:src="${image.getUrl()}" th:alt="${image.getPublicId()}"> -->
                     <h3 th:text="${product.getName()}" class="mb-s"></h3>
                     <p class="mb-s">Category: <span th:text="${product.getCategory().getName()}"></span></p>
                     <p>$<span th:text="${product.getPrice()}" class="name"></span></p>

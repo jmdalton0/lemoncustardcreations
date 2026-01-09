@@ -44,24 +44,28 @@ public class ImageService {
         ));
     }
 
+    private Image create(MultipartFile imageBytes) throws IOException {
+        Map res = this.cloudinary.uploader()
+            .upload(imageBytes.getBytes(), ObjectUtils.asMap(
+                "use_filename", true,
+                "unique_filename", true,
+                "overwrite", true
+            ));
+        String url = res.get("secure_url").toString();
+        String publicId = res.get("public_id").toString();
+
+        Image image = new Image();
+        image.setUrl(url);
+        image.setPublicId(publicId);
+
+        return image;
+    }
+
     public void createForCategory(Long categoryId, MultipartFile imageBytes) {
         try {
-            Map res = this.cloudinary.uploader()
-                .upload(imageBytes.getBytes(), ObjectUtils.asMap(
-                    "use_filename", true,
-                    "unique_filename", true,
-                    "overwrite", true
-                ));
-            String url = res.get("secure_url").toString();
-            String publicId = res.get("public_id").toString();
-
-            Image image = new Image();
-            image.setUrl(url);
-            image.setPublicId(publicId);
-
+            Image image = create(imageBytes);
             Category category = categoryRepo.getReferenceById(categoryId);
             image.setCategory(category);
-
             imageRepo.save(image);
         } catch (IOException e) {
             System.out.println(e.getMessage());
@@ -70,22 +74,9 @@ public class ImageService {
 
     public void createForProduct(Long productId, MultipartFile imageBytes) {
         try {
-            Map res = this.cloudinary.uploader()
-                .upload(imageBytes.getBytes(), ObjectUtils.asMap(
-                    "use_filename", true,
-                    "unique_filename", true,
-                    "overwrite", true
-                ));
-            String url = res.get("secure_url").toString();
-            String publicId = res.get("public_id").toString();
-
-            Image image = new Image();
-            image.setUrl(url);
-            image.setPublicId(publicId);
-
+            Image image = create(imageBytes);
             Product product = productRepo.getReferenceById(productId);
             image.setProduct(product);
-
             imageRepo.save(image);
         } catch (IOException e) {
             System.out.println(e.getMessage());
@@ -103,6 +94,7 @@ public class ImageService {
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
+
         imageRepo.deleteById(id);
     }
 
