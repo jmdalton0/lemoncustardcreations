@@ -84,15 +84,14 @@
 
                         <!-- large info -->
                         <div class="col py-s pl-s">
-                            <label for="description" class="mr-s">Description</label>
-                            <input id="description" name="description" type="text"
-                                x-model="category.description"></input>
+                            <label for="description" class="mb-s">Description</label>
+                            <textarea x-model="category.description" id="description" name="description" rows="4"></textarea>
                         </div>
 
                         <!-- large info -->
                         <div class="col py-s pl-s">
-                            <label for="details" class="mr-s">Details</label>
-                            <input id="details" name="details" type="text" x-model="category.details"></input>
+                            <label for="details" class="mb-s">Details</label>
+                            <textarea x-model="category.details" id="details" name="details" rows="4"></textarea>
                         </div>
 
                         <!-- image upload -->
@@ -102,7 +101,7 @@
                                     @change="$store.categoryStore.uploadImage($event.target.files[0], category.id)">
                             </template>
 
-                            <div class="row">
+                            <div class="row mt-s">
                                 <template x-for="image in category.images">
                                     <div class="relative thumbnail mr-s">
                                         <img :src="image.url" alt="test">
@@ -160,7 +159,7 @@
                                 <input id="name" name="name" type="text" x-model="product.name"></input>
                             </div>
 
-                            <div class="row">
+                            <div class="row mb-s">
                                 <label for="price" class="mr-s">Price</label>
                                 <input id="price" name="price" type="text" x-model="product.price"></input>
                             </div>
@@ -179,9 +178,8 @@
 
                         <!-- large info -->
                         <div class="col py-s pl-s">
-                            <label for="description" class="mr-s">Description</label>
-                            <input id="description" name="description" type="text"
-                                x-model="product.description"></input>
+                            <label for="description" class="mb-s">Description</label>
+                            <textarea x-model="product.description" id="description" name="description" rows="4"></textarea>
                         </div>
 
                         <!-- image upload -->
@@ -191,7 +189,7 @@
                                     @change="uploadImage($event.target.files[0], product.id)">
                             </template>
 
-                            <div class="row">
+                            <div class="row mt-s">
                                 <template x-for="image in product.images">
                                     <div class="relative thumbnail mr-s">
                                         <img :src="image.url" alt="test">

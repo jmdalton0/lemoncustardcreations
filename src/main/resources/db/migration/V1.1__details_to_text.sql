@@ -1,0 +1,6 @@
+ALTER TABLE category
+ALTER COLUMN details TYPE TEXT,
+ALTER COLUMN description TYPE TEXT;
+
+ALTER TABLE product
+ALTER COLUMN description TYPE TEXT;
