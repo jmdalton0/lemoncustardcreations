@@ -53,19 +53,22 @@
                             </template>
 
                             <template x-if="category.id !== null">
-                                <button @click="$store.categoryStore.moveUp(category)" class="btn-tool btn-tool-move-up border-bottom">
+                                <button @click="$store.categoryStore.moveUp(category)"
+                                    class="btn-tool btn-tool-move-up border-bottom">
                                     <img th:src="@{/img/icons/move-up-icon.png}" alt="move up button">
                                 </button>
                             </template>
 
                             <template x-if="category.id !== null">
-                                <button @click="$store.categoryStore.updateCategory(category)" class="btn-tool border-bottom">
+                                <button @click="$store.categoryStore.updateCategory(category)"
+                                    class="btn-tool border-bottom">
                                     <img th:src="@{/img/icons/update-icon.png}" alt="update button">
                                 </button>
                             </template>
 
                             <template x-if="category.id !== null">
-                                <button @click="$store.categoryStore.deleteCategory(category.id)" class="btn-tool btn-tool-delete">
+                                <button @click="$store.categoryStore.deleteCategory(category.id)"
+                                    class="btn-tool btn-tool-delete">
                                     <img th:src="@{/img/icons/delete-icon.png}" alt="delete button">
                                 </button>
                             </template>
@@ -103,7 +106,8 @@
                                 <template x-for="image in category.images">
                                     <div class="relative thumbnail mr-s">
                                         <img :src="image.url" alt="test">
-                                        <button @click="$store.categoryStore.deleteImage(image.id)" class="absolute w-100 h-100 btn-transparent">
+                                        <button @click="$store.categoryStore.deleteImage(image.id)"
+                                            class="absolute w-100 h-100 btn-transparent">
                                             <i class="fa-regular fa-circle-xmark fa-2x"></i>
                                         </button>
                                     </div>
@@ -165,7 +169,9 @@
                                 <label for="category" class="mr-s">Category</label>
                                 <select x-model="product.categoryId">
                                     <template x-for="category in $store.categoryStore.categories">
-                                        <option :value="category.id" x-text="category.name"></option>
+                                        <option x-data="{ selected: false }" :value="category.id" :selected="selected"
+                                            x-effect="selected = category.id === product.categoryId"
+                                            x-text="category.name"></option>
                                     </template>
                                 </select>
                             </div>
@@ -189,7 +195,8 @@
                                 <template x-for="image in product.images">
                                     <div class="relative thumbnail mr-s">
                                         <img :src="image.url" alt="test">
-                                        <button @click="$store.categoryStore.deleteImage(image.id)" class="absolute w-100 h-100 btn-transparent">
+                                        <button @click="$store.categoryStore.deleteImage(image.id)"
+                                            class="absolute w-100 h-100 btn-transparent">
                                             <i class="fa-regular fa-circle-xmark fa-2x"></i>
                                         </button>
                                     </div>
