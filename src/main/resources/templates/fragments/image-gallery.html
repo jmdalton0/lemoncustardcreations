@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<body>
+    <div th:fragment="gallery(images)">
+        <div x-data="{ curImg: 0 }" class="row">
+            <div class="col wrap mr">
+                <button th:each="image, it : ${images}" th:@click="|curImg = ${it.index}|" class="img-s mb">
+                    <img th:src="${image.getUrl()}" th:alt="${image.getPublicId()}" class="img">
+                </button>
+            </div>
+
+            <div class="relative img-l">
+                <img th:each="image, it: ${images}" th:x-show="|curImg === ${it.index}|" th:src="${image.getUrl()}"
+                    th:alt="${image.getPublicId()}" class="absolute img">
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

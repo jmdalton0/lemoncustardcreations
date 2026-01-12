@@ -44,6 +44,12 @@ public class AppController {
         return "category";
     }
 
+    @GetMapping("/products/{id}")
+    public String product(@PathVariable Long id, Model model) {
+        model.addAttribute("product", productService.findById(id));
+        return "product";
+    }
+
     @GetMapping("/about")
     public String about() {
         return "about";

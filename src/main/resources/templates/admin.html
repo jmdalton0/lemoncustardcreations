@@ -103,8 +103,8 @@
 
                             <div class="row mt-s">
                                 <template x-for="image in category.images">
-                                    <div class="relative thumbnail mr-s">
-                                        <img :src="image.url" alt="test">
+                                    <div class="relative img-s mr-s">
+                                        <img :src="image.url" alt="test" class="img">
                                         <button @click="$store.categoryStore.deleteImage(image.id)"
                                             class="absolute w-100 h-100 btn-transparent">
                                             <i class="fa-regular fa-circle-xmark fa-2x"></i>
@@ -191,8 +191,8 @@
 
                             <div class="row mt-s">
                                 <template x-for="image in product.images">
-                                    <div class="relative thumbnail mr-s">
-                                        <img :src="image.url" alt="test">
+                                    <div class="relative img-s mr-s">
+                                        <img :src="image.url" alt="test" class="img">
                                         <button @click="$store.categoryStore.deleteImage(image.id)"
                                             class="absolute w-100 h-100 btn-transparent">
                                             <i class="fa-regular fa-circle-xmark fa-2x"></i>

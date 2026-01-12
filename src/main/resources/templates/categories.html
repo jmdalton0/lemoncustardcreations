@@ -25,8 +25,8 @@
                         <p th:text="${category.getDescription()}" class="mb"></p>
                         <div class="row justify-center wrap">
                             <div th:each="image : ${category.getImages()}" class="m p corners shadow">
-                                <div class="catalog">
-                                    <img th:src="${image.getUrl()}" th:alt="${image.getPublicId()}">
+                                <div class="img-m">
+                                    <img th:src="${image.getUrl()}" th:alt="${image.getPublicId()}" class="img">
                                 </div>
                             </div>
                         </div>
