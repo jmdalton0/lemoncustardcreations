@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<body>
+    <div th:fragment="menu">
+
+        <section th:unless="${#arrays.isEmpty(categories)}">
+
+            <ul class="row justify-around wrap bg-primary">
+                <li th:each="category : ${categories}" class="m">
+                    <a th:href="@{|/categories/${category.getId()}|}" th:text="${category.getName()}"></a>
+                </li>
+
+                <li class="m">
+                    <a th:href="@{/longarm}">E2E Longarm Quilting Service</a>
+                </li>
+            </ul>
+
+        </section>
+
+    </div>
+</body>

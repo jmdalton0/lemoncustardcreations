@@ -9,28 +9,16 @@
 
 <body>
     <main layout:fragment="content">
-        <section th:unless="${#arrays.isEmpty(categories)}">
-            <ul class="row justify-around wrap bg-primary">
-                <li th:each="c : ${categories}" class="m">
-                    <a th:href="@{|/categories/${c.getId()}|}" th:text="${c.getName()}"></a>
-                </li>
-            </ul>
-        </section>
+
+        <section th:replace="~{fragments/category-menu::menu}"></section>
 
         <section th:unless="${#arrays.isEmpty(categories)}">
-            <ul class="mb-l">
-                <li th:each="category : ${categories}">
-                    <div class="col align-center px-l pt-l">
+            <ul class="row wrap mb-l p">
+                <li th:each="category : ${categories}" class="flex m shadow corners">
+                    <a th:href="@{|/categories/${category.getId()}|}" class="col fill center p">
                         <h2 th:text="${category.getName()}" class="mb-s"></h2>
                         <p th:text="${category.getDescription()}" class="mb"></p>
-                        <div class="row justify-center wrap">
-                            <div th:each="image : ${category.getImages()}" class="m p corners shadow">
-                                <div class="img-m">
-                                    <img th:src="${image.getUrl()}" th:alt="${image.getPublicId()}" class="img">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    </a>
                 </li>
             </ul>
         </section>

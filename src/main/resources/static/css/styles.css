@@ -10,8 +10,8 @@
 
     --primary-light: #e6f2e1;
     --primary: #c3d9b8;
-    --primary-dark: #627d53;
-    --primary-dark-hover: #455d39;
+    --primary-dark: #6e8d5d;
+    --primary-dark-hover: #44553b;
 
     --secondary: #d7a4f3;
     --secondary-dark: #85569e;
@@ -96,6 +96,10 @@ img {
 
 .hide {
     display: none;
+}
+
+.bullets li {
+    list-style-type: disc;
 }
 
 /* layout */
@@ -192,6 +196,11 @@ img {
 
 .fit {
     width: fit-content;
+}
+
+.fill {
+    width: 100%;
+    height: 100%;
 }
 
 .w-100 {
@@ -457,7 +466,6 @@ img {
 }
 
 .btn-secondary {
-    padding: 0.5rem 2rem;
     color: var(--secondary-dark);
     background-color: var(--secondary);
 }
@@ -628,7 +636,7 @@ img {
 
 #hero {
     flex: 1;
-    background-image: url('/img/hero-home.jpg');
+    /* background-image: url('/img/hero.jpg'); */
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;

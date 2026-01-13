@@ -19,12 +19,12 @@
         <section class="row justify-between bg-secondary">
             <ul class="row">
                 <li>
-                    <button @click="showCategories = true; showProducts = false" class="btn-secondary">
+                    <button @click="showCategories = true; showProducts = false" class="btn btn-secondary">
                         Categories
                     </button>
                 </li>
                 <li>
-                    <button @click="showProducts = true; showCategories = false" class="btn-secondary">
+                    <button @click="showProducts = true; showCategories = false" class="btn btn-secondary">
                         Products
                     </button>
                 </li>
@@ -32,7 +32,7 @@
             <ul class="row">
                 <li>
                     <form th:action="@{/logout}" method="post">
-                        <button type="submit" class="btn-secondary">Logout</button>
+                        <button type="submit" class="btn btn-secondary">Logout</button>
                     </form>
                 </li>
             </ul>

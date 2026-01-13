@@ -9,13 +9,8 @@
 
 <body>
     <main layout:fragment="content">
-        <section th:unless="${#arrays.isEmpty(categories)}">
-            <ul class="row justify-around wrap bg-primary">
-                <li th:each="c : ${categories}" class="m">
-                    <a th:href="@{|/categories/${c.getId()}|}" th:text="${c.getName()}"></a>
-                </li>
-            </ul>
-        </section>
+
+        <section th:replace="~{fragments/category-menu::menu}"></section>
 
         <section th:unless="${category == null}" class="col align-center px-l pt-l">
             <h2 th:text="${category.getName()}" class="mb-s"></h2>

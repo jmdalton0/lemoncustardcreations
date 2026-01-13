@@ -4,31 +4,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Payments</title>
+    <title>Care Instructions</title>
 </head>
 
 <body>
     <main layout:fragment="content">
-        <section class="col align-center px-l pt-l">
-            <h2 class="mb">How Can I Pay for My Creation?</h2>
-            <p class="mb">At the moment, I only accept personal, local orders.</p>
-            <p>Please use one of the following payments methods.</p>
-        </section>
 
         <section class="col align-center p-l">
-            <img th:src="@{/img/qr.png}" alt="venmo payments" width="200" class="mb">
-            <a href="https://venmo.com/u/Kari-Dalton-2">Pay On Venmo</a>
+            <h2 class="mb">E2E Longarm Quilting Service</h2>
+
+            <h3 class="mb-s">Edge to Edge Longarm Quilting Service</h3>
+
+            <p class="mb-s">I offer edge-to-edge (E2E) longarm quilting to beautifully finish your quilt top with a continuous, all-over design. I am currently offering to bind your quilt for FREE if there is enough backing fabric left over. This style of quilting provides texture, durability, and a polished look while allowing your piecing to shine.</p>
+            <p class="mb">Edge-to-edge quilting uses a single repeated pattern stitched seamlessly across the entire quilt surface, making it a popular and cost-effective option for both everyday quilts and gifts.</p>
+            
+            <h3 class="mb-s">What's Included</h3>
+            <ul class="col justify-start mb bullets">
+                <li>Your quilt top</li>
+                <li>Hobbs 80/20 batting</li>
+                <li>Trimmed and ready for binding if requested.</li>
+            </ul>
+            
+            <p>Enter the width and length of your quilt top below to receive an estimated quilting cost.</p>
         </section>
 
         <section class="col align-center p-l bg-primary-dark">
-            <h2 class="mb">Generate a Quote</h2>
+            <h2 class="mb">Estimated Cost</h2>
             <div class="col" x-data="{ height: 0.0, width: 0.0, rate: 0.03 }">
-                <div class="row mob-col mb border-primary">
-                    <button @click="height = 75; width = 38" class="flex btn btn-primary">Twin</button>
-                    <button @click="height = 75; width = 54" class="flex btn btn-primary">Full</button>
-                    <button @click="height = 80; width = 60" class="flex btn btn-primary">Queen</button>
-                    <button @click="height = 80; width = 76" class="flex btn btn-primary">King</button>
-                </div>
                 <div class="row mob-col">
                     <div class="col justify-start">
                         <p class="mb-s">Height (in)</p>
@@ -45,6 +47,7 @@
                 </div>
             </div>
         </section>
+ 
     </main>
 </body>
 

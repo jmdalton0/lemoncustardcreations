@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout.html}">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Purchase</title>
+</head>
+
+<body>
+    <main layout:fragment="content">
+        <section class="col align-center px-l pt-l">
+            <h2 class="mb">How Can I Purchase My Creation?</h2>
+            <p class="mb">I currently accept Venmo, cash, or personal checks.</p>
+            <p class="mb">Because each order is custom-made, all sales are final.</p>
+            <p class="mb">Please use the following QR code for Venmo.</p>
+        </section>
+
+        <section class="col align-center p-l">
+            <img th:src="@{/img/qr.png}" alt="venmo payments" width="200" class="mb">
+            <a href="https://venmo.com/u/Kari-Dalton-2">Pay On Venmo</a>
+        </section>
+   </main>
+</body>
+
+</html>

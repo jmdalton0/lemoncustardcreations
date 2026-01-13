@@ -60,9 +60,19 @@ public class AppController {
         return "contact";
     }
 
-    @GetMapping("/payments")
-    public String payments() {
-        return "payments";
+    @GetMapping("/purchase")
+    public String purchase() {
+        return "purchase";
+    }
+
+    @GetMapping("/longarm")
+    public String longarm() {
+        return "longarm";
+    }
+
+    @GetMapping("/care")
+    public String care() {
+        return "care";
     }
 
     @GetMapping("/admin")

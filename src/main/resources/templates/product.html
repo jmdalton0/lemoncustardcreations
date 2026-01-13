@@ -9,22 +9,18 @@
 
 <body>
     <main layout:fragment="content">
+
         <div class="row mob-col p-l">
             <div class="mr-l mob-m-0">
                 <div th:replace="~{fragments/image-gallery::gallery(${product.getImages()})}"></div>
             </div>
 
-            <div class="col justify-between pt">
-                <div class="col">
-                    <h2 th:text="${product.getName()}" class="mb"></h2>
-                    <p th:text="${product.getDescription()}"></p>
-                </div>
-
-                <div class="row justify-end">
-                    <a href="" class="btn btn-primary">Purchase</a>
-                </div>
+            <div class="col pt">
+                <h2 th:text="${product.getName()}" class="mb"></h2>
+                <p th:text="${product.getDescription()}"></p>
             </div>
         </div>
+
     </main>
 </body>
 
