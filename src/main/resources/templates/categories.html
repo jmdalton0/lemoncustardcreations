@@ -13,7 +13,7 @@
         <section th:replace="~{fragments/category-menu::menu}"></section>
 
         <section th:unless="${#arrays.isEmpty(categories)}">
-            <ul class="row wrap mb-l p">
+            <ul class="row mob-col wrap p">
                 <li th:each="category : ${categories}" class="flex m shadow corners">
                     <a th:href="@{|/categories/${category.getId()}|}" class="col fill center p">
                         <h2 th:text="${category.getName()}" class="mb-s"></h2>

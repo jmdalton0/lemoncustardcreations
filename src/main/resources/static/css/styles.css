@@ -54,6 +54,7 @@ h6 {
 }
 
 p {
+    width: min(100%, 50rem);
     font-size: 1rem;
 }
 

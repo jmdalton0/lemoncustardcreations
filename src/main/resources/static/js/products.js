@@ -75,7 +75,6 @@ document.addEventListener('alpine:init', () => {
         },
 
         async deleteImage(id) {
-            console.log(id);
             await fetch(`/api/images/${id}`, {
                 method: 'DELETE',
                 headers: getHeaders(), 

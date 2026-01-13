@@ -13,9 +13,9 @@
         <section th:replace="~{fragments/category-menu::menu}"></section>
 
         <section th:unless="${category == null}" class="col align-center px-l pt-l">
-            <h2 th:text="${category.getName()}" class="mb-s"></h2>
-            <p th:text="${category.getDescription()}" class="mb-s"></p>
-            <p th:text="${category.getDetails()}"></p>
+            <h2 th:text="${category.getName()}" class="mb"></h2>
+            <p th:text="${category.getDescription()}" class="mb"></p>
+            <p th:text="${category.getDetails()}" class="mb"></p>
         </section>
 
         <section th:unless="${#arrays.isEmpty(products)}">
