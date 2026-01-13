@@ -13,35 +13,35 @@
         <section class="col align-center p-l">
             <h2 class="mb">E2E Longarm Quilting Service</h2>
 
-            <h3 class="mb-s">Edge to Edge Longarm Quilting Service</h3>
+            <h3 class="mb">Edge to Edge Longarm Quilting Service</h3>
 
-            <p class="mb-s">I offer edge-to-edge (E2E) longarm quilting to beautifully finish your quilt top with a continuous, all-over design. I am currently offering to bind your quilt for FREE if there is enough backing fabric left over. This style of quilting provides texture, durability, and a polished look while allowing your piecing to shine.</p>
+            <p class="mb">I offer edge-to-edge (E2E) longarm quilting to beautifully finish your quilt top with a continuous, all-over design. I am currently offering to bind your quilt for FREE if there is enough backing fabric left over. This style of quilting provides texture, durability, and a polished look while allowing your piecing to shine.</p>
             <p class="mb">Edge-to-edge quilting uses a single repeated pattern stitched seamlessly across the entire quilt surface, making it a popular and cost-effective option for both everyday quilts and gifts.</p>
             
-            <h3 class="mb-s">What's Included</h3>
+            <h3 class="mb">What's Included</h3>
             <ul class="col justify-start mb bullets">
                 <li>Your quilt top</li>
                 <li>Hobbs 80/20 batting</li>
                 <li>Trimmed and ready for binding if requested.</li>
             </ul>
             
-            <p>Enter the width and length of your quilt top below to receive an estimated quilting cost.</p>
+            <p>Enter the length and width of your quilt top below to receive an estimated quilting cost.</p>
         </section>
 
         <section class="col align-center p-l bg-primary-dark">
             <h2 class="mb">Estimated Cost</h2>
-            <div class="col" x-data="{ height: 0.0, width: 0.0, rate: 0.03 }">
+            <div class="col" x-data="{ length: 0.0, width: 0.0, rate: 0.03 }">
                 <div class="row mob-col">
                     <div class="col justify-start">
-                        <p class="mb-s">Height (in)</p>
-                        <input x-model="height" type="number" class="mb">
+                        <p class="mb-s">Length (in)</p>
+                        <input x-model="length" type="number" class="mb">
                         <p class="mb-s">Width (in)</p>
                         <input x-model="width" type="number" class="mb">
                     </div>
                     <div class="col justify-center align-end" style="width: 20rem">
                         <p class="text-jumbo">
                             <span>$</span>
-                            <span x-text="(height * width * rate).toFixed(2)"></span>
+                            <span x-text="(length * width * rate).toFixed(2)"></span>
                         </p>
                     </div>
                 </div>
