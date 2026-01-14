@@ -13,6 +13,6 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     @Query("SELECT p FROM Product p ORDER BY p.position ASC")
     List<Product> findAll();
 
-    List<Product> findByCategoryId(Long id);
+    List<Product> findByCategoryIdOrderByPosition(Long id);
     
 }

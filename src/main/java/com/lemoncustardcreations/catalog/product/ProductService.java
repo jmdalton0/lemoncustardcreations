@@ -32,7 +32,7 @@ public class ProductService {
     }
 
     public List<Product> findByCategoryId(Long id) {
-        return repo.findByCategoryId(id);
+        return repo.findByCategoryIdOrderByPosition(id);
     }
 
     public void save(ProductDTO productDTO) {

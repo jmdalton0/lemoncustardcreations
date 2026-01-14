@@ -32,7 +32,6 @@ public class AppController {
     @GetMapping("/categories")
     public String products(Model model) {
         model.addAttribute("categories", categoryService.findAll());
-        model.addAttribute("products", productService.findAll());
         return "categories";
     }
 
